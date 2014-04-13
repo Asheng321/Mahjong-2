@@ -24,6 +24,12 @@ public class Tile {
 	public HonorType color;
 	public int number;
 	
+	// Tile size + measurement
+	static final int heightSmall = 60;
+	static final int heightBig = 100;
+	static final int widthSmall = 40;
+	static final int widthBig = 65;
+	
 	public Tile(Suit suit, HonorType color) {
 		if (suit == Suit.HONOR || suit != null || color != null)
 		{
