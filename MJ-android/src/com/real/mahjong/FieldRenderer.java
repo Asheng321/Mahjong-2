@@ -1,31 +1,45 @@
 package com.real.mahjong;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
+
 import java.util.Vector;
 
 public class FieldRenderer {
 
 	private Field field;
+	private OrthographicCamera cam;
+	
+	//ShapeRenderer debugRenderer = new ShapeRenderer();
 	
 	ShapeRenderer renderer = new ShapeRenderer();
 	
 	public FieldRenderer(Field f) {
 		this.field = f;
+		this.cam = new OrthographicCamera(10, 7);
+		this.cam.position.set(5,3.5f,0);
+		this.cam.update();
 	}
 	
 	public void render() {
 		// Draw for each player
+		renderer.setProjectionMatrix(cam.combined);
 		renderer.begin(ShapeType.Line);
 		Vector<Player> pl = field.getPlayers();
-		//renderer.setColor(new Color( 1, 0, 0, 1));
+		//Color c = new Color(1,0,0,1);
+		//renderer.setColor(new Color( 1, 1, 1, 1));
+		renderer.setColor(Color.WHITE);
 		// For the first player (host) draw big cards (1)
-		draw(pl.get(0), 1 );
+		renderer.polygon(new float[]{1f, 3f, 6f, 9f});
+		//renderer.dispose();
+		/*draw(pl.get(0), 1 );
 		draw(pl.get(1), 2);
-		draw(pl.get(3), 3);
+		draw(pl.get(3), 3);*/
+		renderer.end();
 	}
 	
 	// Draw the GUI

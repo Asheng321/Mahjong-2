@@ -11,9 +11,9 @@ public class MainActivity extends AndroidApplication {
         
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         config.useGL20 = true;
-        config.useAccelerometer = false;
-        config.useCompass = false;
-        config.useWakelock = true;
+        //config.useAccelerometer = false;
+        //config.useCompass = false;
+        //config.useWakelock = false;
         initialize(new Mahjong(), config);
     }
 }

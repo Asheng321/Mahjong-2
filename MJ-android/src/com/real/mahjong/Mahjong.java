@@ -7,7 +7,9 @@ public class Mahjong extends Game {
 	
 	@Override
 	public void create() {
-		setScreen(new GameScreen());
+		GameScreen gs = new GameScreen();
+		setScreen(gs);
+		
 	}
 
 }

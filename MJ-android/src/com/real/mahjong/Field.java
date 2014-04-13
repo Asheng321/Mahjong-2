@@ -15,8 +15,12 @@ public class Field {
 	private Vector<Player> players = new Vector<Player>(4);
 	public Field()
 	{
-		List<Player.Direction> dirs = Arrays.asList(Player.Direction.NORTH,
-				Player.Direction.SOUTH, Player.Direction.EAST, Player.Direction.WEST);
+		ArrayList<Player.Direction> dirs;
+		dirs = new ArrayList<Player.Direction>(4);
+		dirs.add(Player.Direction.NORTH);
+		dirs.add(Player.Direction.SOUTH);
+		dirs.add(Player.Direction.EAST);
+		dirs.add(Player.Direction.WEST);
 		Random generator = new Random();
 		Vector<Player.Direction> randDirs = new Vector<Player.Direction>(4);
 		for(int i = 0; i < 4; ++i)
