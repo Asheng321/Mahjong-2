@@ -1,9 +1,10 @@
 package com.real.mahjong;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Player {
-	public enum Direction { North, East, South, West }
+	public enum Direction { NORTH, EAST, SOUTH, WEST }
 	private Direction dir;
 	private String name;
 	private Hand hand;
@@ -14,6 +15,7 @@ public class Player {
 		this.dir = dir;
 		this.name = name;
 		this.hand = hand;
+		discard = new Stack<Tile>();
 	}
 	
 	public void updateScore(int lastRound) {
@@ -43,6 +45,13 @@ public class Player {
 	public String getName()
 	{
 		return name;
+	}
+	
+	public void emptyHand(int handSize)
+	{
+		ArrayList<Tile> empty = new ArrayList<Tile>(handSize);
+		hand = new Hand(handSize, empty);
+		discard = new Stack<Tile>();
 	}
 	
 	public Hand getHand()

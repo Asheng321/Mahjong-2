@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Deck {
-	public enum DeckType { Basic }
+	public enum DeckType { BASIC }
 	public DeckType deckType;
 	public LinkedList<Tile> deck;
 	
