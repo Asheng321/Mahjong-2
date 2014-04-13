@@ -1,9 +1,7 @@
 package com.real.mahjong;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 
 public class Deck {
@@ -13,24 +11,41 @@ public class Deck {
 	
 	public Deck(DeckType deckType) {
 		this.deckType = deckType;
-		shuffle(deckType);
-	}	
+		shuffle();
+	}
 
-	private void shuffle(DeckType deckType) {
+	private void shuffle() {
 		this.deck = new LinkedList<Tile>(); 
 		ArrayList<Tile> toShuffle = new ArrayList<Tile>();
-		if (deckType == DeckType.Basic) {
-			List<Tile.Suit> suits = Arrays.asList(Tile.Suit.Bamboo, 
-				Tile.Suit.Character, Tile.Suit.Circle);
-			for (Tile.Suit suit : suits) {
-				for (int i = 1; i < 10; i++) {
-					Tile newTile = new Tile(suit, i);
-					toShuffle.add(newTile);
-					toShuffle.add(newTile);
-					toShuffle.add(newTile);
-					toShuffle.add(newTile);
+		switch(deckType)
+		{
+			default:
+				for(Tile.Suit currSuit = Tile.Suit.CHARACTER; currSuit != null; currSuit.next())
+				{
+					if(currSuit != Tile.Suit.HONOR)
+					{
+						for(int i = 0; i < 9; ++i)
+						{
+							for(int j = 0; j < 4; ++j)
+							{
+								Tile newTile = new Tile(currSuit, i);
+								deck.add(newTile);
+							}
+						}
+					}
+					else
+					{
+						for(Tile.HonorType currType = Tile.HonorType.GREEN; currType != null; currType.next())
+						{
+							for(int i = 0; i < 4; ++i)
+							{
+								Tile newTile = new Tile(currSuit, currType);
+								deck.add(newTile);
+							}
+						}
+					}
 				}
-			}
+				break;
 		}
 		while (!(toShuffle.isEmpty())) {
 			Random ran = new Random();

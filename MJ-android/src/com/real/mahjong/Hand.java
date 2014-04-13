@@ -8,21 +8,21 @@ public class Hand {
 	public List<Tile> aside;
 	
 	public Hand(int num, List<Tile> tiles) {
-		this.setHandCount(num - 1);
+		this.setCount(num - 1);
 		this.tiles = tiles;
 	}
 
-	public int getHandCount() {
+	public int getCount() {
 		return handCount;
 	}
 
-	public void setHandCount(int handCount) {
+	public void setCount(int handCount) {
 		this.handCount = handCount;
 	}
 	
 	public void drawFront(Deck deck) {
 		Tile newTile = deck.draw();
-		while (newTile.suit == Tile.Suit.Dragon) {
+		while (newTile.suit == Tile.Suit.HONOR) {
 			score += 1;
 			this.aside.add(newTile);
 			newTile = deck.bDraw();
@@ -32,7 +32,7 @@ public class Hand {
 	
 	public void drawBack(Deck deck) {
 		Tile newTile = deck.bDraw();
-		while (newTile.suit == Tile.Suit.Dragon) {
+		while (newTile.suit == Tile.Suit.HONOR) {
 			score += 1;
 			this.aside.add(newTile);
 			newTile = deck.bDraw();
