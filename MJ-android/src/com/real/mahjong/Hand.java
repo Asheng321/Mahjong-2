@@ -1,15 +1,16 @@
 package com.real.mahjong;
-import java.util.List;
+import java.util.ArrayList;
 
 public class Hand {
 	private int handCount;
-	public List<Tile> tiles;
+	public ArrayList<Tile> tiles;
 	private int score;
-	public List<Tile> aside;
+	public ArrayList<Tile> aside;
 	
-	public Hand(int num, List<Tile> tiles) {
-		this.setCount(num - 1);
+	public Hand(int num, ArrayList<Tile> tiles) {
+		this.setCount(num);
 		this.tiles = tiles;
+		aside = new ArrayList<Tile>(num - 2);
 	}
 
 	public int getCount() {
@@ -44,20 +45,20 @@ public class Hand {
 		return this.tiles.remove(ind);
 	}
 	
-	public void asideThree(List<Tile> tiles) {
+	public void asideThree(ArrayList<Tile> tiles) {
 		for (Tile tile : tiles) {
 			this.aside.add(tile);
 		}
 	}
 	
-	public void asideFour(List<Tile> tiles) {
+	public void asideFour(ArrayList<Tile> tiles) {
 		for (Tile tile : tiles) {
 			this.aside.add(tile);
 		}
 		score++;
 	}
 	
-	public void updateAside(List<Tile> tiles) {
+	public void updateAside(ArrayList<Tile> tiles) {
 		for (Tile tile : tiles) {
 			this.aside.add(tile);
 		}
