@@ -1,36 +1,14 @@
 package com.me.mygdxgame;
 
-import com.badlogic.gdx.ApplicationListener;
+import com.me.mygdxgame.screens.GameScreen;
 
-public class Mahjong implements ApplicationListener {
+import com.badlogic.gdx.Game;
+
+public class Mahjong extends Game {
 	
 	@Override
 	public void create() {
-
+		setScreen(new GameScreen());
 	}
 
-	@Override
-	public void resize(int width, int height) {
-		
-	}
-	
-	@Override
-	public void render() {
-		
-	}
-	
-	@Override
-	public void pause() {
-		
-	}
-	
-	@Override
-	public void resume() {
-		
-	}
-	
-	@Override
-	public void dispose() {
-		
-	}
 }
